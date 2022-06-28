@@ -9,5 +9,8 @@
 <body>
     {{ name }}
     <p>โดย : {{ author }}</p>
+    {% for tag in tags %}
+    <p>{{ tag }}</p>
+    {% endfor %}
 </body>
 </html>
