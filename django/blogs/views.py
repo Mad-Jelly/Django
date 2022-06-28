@@ -25,9 +25,9 @@ def insert(request):
                                      
   })
   
-def add(request):
-  name=request.GET['name']
-  content=request.GET['content']
+def add(request): 
+  name=request.POST['name']
+  content=request.POST['content']
   return render(request,'result.html',
   {
     'name':name,
