@@ -1,0 +1,10 @@
+mkvirtualenv (สร้าง virtualenv ใหม่ )
+rmvirtualenv (เอา virtualenv ที่มีอยู่ออก )
+workon (เปลี่ยน virtualenv ปัจจุบัน )
+add2virtualenv (เพิ่มแพคเกจภายนอกในไฟล์ . / virtualenv ปัจจุบัน )
+cdsitepackages (เข้าไปในพื้นที่ไดเรกทอรีของแพคเกจ virtualenv ปัจจุบัน )
+cdvirtualenv (เข้าไปในรากของ virtualenv ปัจจุบัน )
+deactivate (ปิด virtualenv)
+
+python manage.py runserver  Start Server **ต้อง cd เข้าไปอยู่ใน Directory ของ Project นั้นๆก่อน
+pypthon manage.py startapp "ชื่อ app" สร้างแอปขึ้นมาภายใต้โปรเจ็คของเรา
