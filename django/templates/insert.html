@@ -4,6 +4,7 @@
 <h2 class="py-5">Insert</h2>
 
 <form action="../add/" method="post">
+    {% csrf_token %} 
     <div class="input-group mb-3">
         <input type="text" class="form-control" name="name" id="name">
       </div>
