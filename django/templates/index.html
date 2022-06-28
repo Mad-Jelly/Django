@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{ name }}
-    <p>โดย : {{ author }}</p>
-    {% for tag in tags %}
-    <p>{{ tag }}</p>
-    {% endfor %}
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <!--ดึงค่ามาจากหน้า View--> 
+    <h1> {{ name }} </h1>
+
+    <!--ดึงค่ามาจากหน้า View--> 
+    <h2><p>โดย : {{ author }}</p></h2>
+
+
+    <!--การใช้ Loop  -->
+    <ul>
+        {% for tag in tags %}
+        <h2><li> #{{ tag }}</li></h2>
+        {% endfor %}
+    </ul>
+    <!--การใช้ Loop  -->
+
+
+    <!--การใช้  IF -->
+    <h2>ความนิยม</h2>
+    {% if rating > 3%}
+    <h3>ดีมาก</h3>
+    {% else %}
+    <h3>ไม่ได้รับความนิยม</h3>
+    {% endif %}
+    <!--การใช้  IF -->
+
+{% endblock  %}
+

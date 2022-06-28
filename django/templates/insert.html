@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="py-5">Insert</h2>
+
+<form action="../add" method="get">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="name">
+      </div>
+    <div class="mb-3">
+      <label  class="form-label">Password</label>
+      <input type="text" class="form-control" name="content" id="content">
+    </div>
+    <button type="submit" class="btn btn-primary" value="save">Submit</button>
+  </form>
+
+{% endblock  %}
