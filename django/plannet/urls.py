@@ -18,9 +18,17 @@ from django.urls import path
 from blogs import views
 
 urlpatterns = [
+    #เมื่อเปิด localhost:8000/admin ก็จะไปที่หน้า admin
     path('admin/', admin.site.urls),
+    
+    #เมื่อเปิด localhost:8000 ก็จะเรียกใช้ Function hello จาก view.py และนำทางไปยัง .html ที่อยู่ใน Function
     path('',views.hello),
+    #เมื่อเปิด localhost:8000/page1  ก็จะเรียกใช้ Function page1 จาก view.py และนำทางไปยัง .html ที่อยู่ใน Function
     path('page1/',views.page1),
+    
+    #เมื่อเปิด localhost:8000/insert ก็จะเรียกใช้ Function insert จาก view.py และนำทางไปยัง .html ที่อยู่ใน Function
     path('insert/',views.insert),
+    
+    #เมื่อเปิด localhost:8000/add  ก็จะเรียกใช้ Function chart จาก view.py และนำทางไปยัง .html ที่อยู่ใน Function
     path('add/',views.chart)
 ]

@@ -1,5 +1,7 @@
+<!--ขยาย Templates มาจาก layout.html โดยนำ Docutment meta tag Bootstraps ในไฟล์ layout.htmlมาด้วยทั้งหมด-->
 {% extends 'layout.html' %}
 
+<!--การแสดงผลทั้งหมดใน Block นี้ จะปรากฏอยู่แค่ในหน้านี้เท่านั้น แต่ Templates ทั้งหมดจะถูกดึงมาจาก Layout.html -->
 {% block content %}
 <h2>การแสดงค่า pm 2.5</h2>
 <table class="table table-striped">
