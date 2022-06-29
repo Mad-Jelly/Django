@@ -2,17 +2,82 @@
 
 {% block content %}
 <h2 class="py-5">Insert</h2>
-
+<div class="row-cols-6">
 <form action="../add/" method="post">
     {% csrf_token %} 
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="name" id="name">
+    <div class=" mb-3">
+      <label  class="form-label">Start time</label>
+      <input type="time"  class="form-control" name="stime" id="stime">
       </div>
     <div class="mb-3">
-      <label  class="form-label">Password</label>
-      <input type="text" class="form-control" name="content" id="content">
+      <label  class="form-label">End time</label>
+      <input type="time"  class="form-control" name="etime" id="etime">
     </div>
-    <button type="submit" class="btn btn-primary" value="save">Submit</button>
+    <button type="submit"   class="btn btn-primary" value="save">Submit</button>
   </form>
-
+</div>
+    <div class="row-cols-6">
+      <h2>การแสดงค่า pm 2.5</h2>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ลำดับ</th>
+            <th scope="col">ค่า PM 2.5</th>
+            <th scope="col">เวลา</th>  
+          </tr>
+        </thead>
+        <tbody>
+            {% for pm in pm %}
+          <tr>
+            <th scope="row">{{pm.id}}</th>
+            <td>{{pm.pm_value}}</td>
+            <td>{{pm.pm_date|time:"H:i:s"}}</td>  
+          </tr>
+          <tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    
+    <!--<div class="row-cols-6 py-5">
+      <canvas id="myChart"></canvas>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+       
+        const labels = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+        ];
+      
+        const data = {
+          labels: labels,
+          datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+          }]
+        };
+      
+        const config = {
+          type: 'line',
+          data: data,
+          options: {}
+        };
+      </script>
+      <script>
+        const myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+      </script>
+      
+      
+    </div>-->
+    
 {% endblock  %}

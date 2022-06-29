@@ -1,13 +1,14 @@
 from unicodedata import name
+from xmlrpc.client import DateTime
 from django.shortcuts import render
 from .models import pm_collect
-import datetime
+from datetime import datetime
 # Create your views here.
 
 def hello(request):
   #Query data from model
   #data=pm_collect.objects.filter(pm_value=7.5)
-  data=pm_collect.objects.filter(pm_date__time__range=(datetime.time(11,4,00),datetime.time(11,5,13)))
+  data=pm_collect.objects.filter(pm_date__time__range=('11:45','11:46'))
   return render(request,'index.html',
   {
     'pm':data
@@ -33,11 +34,39 @@ def insert(request):
   })
   
 def add(request): 
-  name=request.POST['name']
-  content=request.POST['content']
+  name=request.POST['stime']
+  content=request.POST['etime']
   return render(request,'result.html',
   {
     'name':name,
     'content':content,
                  
   })
+  
+def chart(request):
+  s=request.POST['stime']
+  e=request.POST['etime']
+  #Query data from model
+  #data=pm_collect.objects.filter(pm_value=7.5)
+  
+  data=pm_collect.objects.filter(pm_date__time__range=(s,e))
+  return render(request,'insert.html',
+  {
+    'pm':data
+    
+  })
+  
+def testtime(request):
+  
+  s=request.POST['stime']
+  e=request.POST['etime']
+  #Query data from model
+  #data=pm_collect.objects.filter(pm_value=7.5)
+  
+  data=pm_collect.objects.filter(pm_date__time__range=(s,e))
+  return render(request,'index.html',
+  {
+    'pm':data
+    
+  })
+  
