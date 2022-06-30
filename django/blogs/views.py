@@ -72,22 +72,36 @@ def testtime(request):
     
   })
   
-def registger(request):
-  username=request.POST['username']
-  password=request.POST['password']
-  repassword=request.POST['repassword']
-  fname=request.POST['fname']
-  lname=request.POST['lname']
-  email=request.POST['email']
   
-  user=User.objects.create_user(
-    username=username,
-    password=password,
-    first_name=fname,
-    last_name=lname,
-    email=email
-  )
-  user.save()
-  return render(request,'register.html')
+def registger(request):
+  if request.method == 'POST':
+    uname=request.POST["uname"]
+    password=request.POST['password']
+    fname=request.POST['fname']
+    lname=request.POST['lname']
+    email=request.POST['email']
+    
+    user=User.objects.create_user(
+      username=uname,
+      password=password,
+      first_name=fname,
+      last_name=lname,
+      email=email
+    )
+    user.save()
+    return render(request,'register.html',{
+      
+      'fname':fname,
+      'lname':lname,
+    })
+  else:
+    return render(request,'register.html',{
+      
+     
+    })
+    
+    
+
+#def welcome(request):return render(request,'welcome_regis.html')
     
     

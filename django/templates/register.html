@@ -1,34 +1,38 @@
 {% extends 'layout.html' %}
+
 {% block content %}
+{{eror}}
+
+
 <h2 class="pt-4">ลงทะเบียนผู้ใช้งาน</h2>
 <div class="row col-md-auto"  >
     <form action="../register/" method="POST">
         {% csrf_token %} 
         <div class=" mb-3">
             <label  class="form-label">Username</label>
-            <input type="input"  class="form-control" name="username" id="username" >
+            <input type="input"  class="form-control" name="uname"  >
         </div>
         <div class="mb-3">
             <label  class="form-label">Password</label>
-            <input type="password"  class="form-control" name="password" id="password">
+            <input type="password"  class="form-control" name="password" >
         </div>
         <div class="mb-3">
             <label  class="form-label">Re-Password</label>
-            <input type="password"  class="form-control" name="repassword" id="repassword">
+            <input type="password"  class="form-control" name="repassword" >
         </div>
         <div class="mb-3">
             <label  class="form-label">Firstname</label>
-            <input type="input"  class="form-control" name="fname" id="fname">
+            <input type="input"  class="form-control" name="fname" >
         </div>
         <div class="mb-3">
             <label  class="form-label">LastName</label>
-            <input type="input"  class="form-control" name="lname" id="lname">
+            <input type="input"  class="form-control" name="lname" >
         </div>
         <div class="mb-3">
             <label  class="form-label">Email</label>
             <input type="email"  class="form-control" name="email" id="email">
         </div>     
-          <button type="submit"   class="btn btn-primary" value="register">ลงทะเบียน</button>
+          <button type="submit"   class="btn btn-primary" value="save">ลงทะเบียน</button>
     </form>
 
 </div>
