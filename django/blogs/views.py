@@ -1,9 +1,10 @@
 from unicodedata import name
 from xmlrpc.client import DateTime
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import pm_collect
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 
@@ -58,7 +59,7 @@ def chart(request):
     
   })
   
-def testtime(request):
+def r(request):
   
   s=request.POST['stime']
   e=request.POST['etime']
@@ -75,25 +76,31 @@ def testtime(request):
   
 def registger(request):
   if request.method == 'POST':
+    if request.POST["uname"]=='':
+      return redirect('/register')
     uname=request.POST["uname"]
     password=request.POST['password']
+    repassword=request.POST['repassword']
     fname=request.POST['fname']
     lname=request.POST['lname']
     email=request.POST['email']
-    
-    user=User.objects.create_user(
-      username=uname,
-      password=password,
-      first_name=fname,
-      last_name=lname,
-      email=email
-    )
-    user.save()
-    return render(request,'register.html',{
+    if password==repassword :
+       if password==repassword :
+        if User.objects.filter(username=uname).exists():
+          return redirect('/register')
+        elif User.objects.filter(email=email).exists():
+          return redirect('/register')
+        else:
+          user=User.objects.create_user(
+            username=uname,
+            password=password,
+            first_name=fname,
+            last_name=lname,
+            email=email
+          )
       
-      'fname':fname,
-      'lname':lname,
-    })
+          user.save()
+          return redirect('')        
   else:
     return render(request,'register.html',{
       
