@@ -1,3 +1,4 @@
+from email import message
 from unicodedata import name
 from xmlrpc.client import DateTime
 from django.shortcuts import render,redirect
@@ -77,19 +78,27 @@ def r(request):
 def registger(request):
   if request.method == 'POST':
     if request.POST["uname"]=='':
+      messages.error(request,'กรุณากรอกข้อมูลให้ครบถ้วนด้วยครับ')
       return redirect('/register')
+    
     uname=request.POST["uname"]
     password=request.POST['password']
     repassword=request.POST['repassword']
     fname=request.POST['fname']
     lname=request.POST['lname']
     email=request.POST['email']
+    
     if password==repassword :
        if password==repassword :
-        if User.objects.filter(username=uname).exists():
+         
+        if User.objects.filter(username=uname).exists():   
+          messages.info(request,'User นี้ได้ถูกลงทะเบียนไปแล้วครับ ')     
           return redirect('/register')
+        
         elif User.objects.filter(email=email).exists():
+          messages.info(request,'Email นี้ได้ถูกลงทะเบียนไปแล้วครับ ')  
           return redirect('/register')
+        
         else:
           user=User.objects.create_user(
             username=uname,
@@ -97,15 +106,11 @@ def registger(request):
             first_name=fname,
             last_name=lname,
             email=email
-          )
-      
+          )     
           user.save()
           return redirect('')        
   else:
-    return render(request,'register.html',{
-      
-     
-    })
+    return render(request,'register.html')
     
     
 
