@@ -3,6 +3,8 @@ from xmlrpc.client import DateTime
 from django.shortcuts import render
 from .models import pm_collect
 from datetime import datetime
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 #สร้างฟังชั่น Hello ขึ้นมา ถ้าถูกเรียกใช้จะเริ่มทำการดึงข้อมูลจาก Model.py และไปดึงข้อมูลจาก table ที่ชื่อว่า pm_collect แล้วนำไปแสดงผลในหน้า index.html
@@ -70,3 +72,22 @@ def testtime(request):
     
   })
   
+def registger(request):
+  username=request.POST['username']
+  password=request.POST['password']
+  repassword=request.POST['repassword']
+  fname=request.POST['fname']
+  lname=request.POST['lname']
+  email=request.POST['email']
+  
+  user=User.objects.create_user(
+    username=username,
+    password=password,
+    first_name=fname,
+    last_name=lname,
+    email=email
+  )
+  user.save()
+  return render(request,'register.html')
+    
+    
