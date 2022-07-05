@@ -122,7 +122,7 @@ def login(request):
   #login
     if user is not None :
       auth.login(request,user)
-      return redirect('/register')
+      return redirect('/insert')
     else :
       messages.info(request,'Username หรือ Password ไม่ถูกต้อง')
     return redirect('/login')

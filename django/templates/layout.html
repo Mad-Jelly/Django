@@ -38,9 +38,16 @@
                 </ul>
               </li>           
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            
+            <form class="d-flex pe-lg-5">
+              
+              {% if user.is_authenticated %}
+                
+                 {{user.first_name}}
+                
+              {% else %}
+                ยังไม่ได้เข้าสู่ระบบ
+              {% endif %}
             </form>
           </div>
         </div>
