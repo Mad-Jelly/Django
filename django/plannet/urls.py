@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     #เมื่อเปิด localhost:8000 ก็จะเรียกใช้ Function hello จาก view.py และนำทางไปยัง .html ที่อยู่ใน Function
-    path('',views.hello),
+    path('',views.login),
     
     #เมื่อเปิด localhost:8000/page1  ก็จะเรียกใช้ Function page1 จาก view.py และนำทางไปยัง .html ที่อยู่ใน Function
     path('page1/',views.page1),
@@ -36,4 +36,6 @@ urlpatterns = [
     
     
     path('register/',views.registger),
+    
+    path('login/',views.login),
 ]

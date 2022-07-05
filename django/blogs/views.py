@@ -4,7 +4,8 @@ from xmlrpc.client import DateTime
 from django.shortcuts import render,redirect
 from .models import pm_collect
 from datetime import datetime
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,auth
+from django.contrib.auth import authenticate
 from django.contrib import messages
 
 # Create your views here.
@@ -111,9 +112,24 @@ def registger(request):
           return redirect('')        
   else:
     return render(request,'register.html')
-    
-    
+  
+def login(request):
+  if request.method == 'POST':
+    uname=request.POST["uname"]
+    password=request.POST['password'] 
+    user = auth.authenticate(username=uname, password= password)
 
-#def welcome(request):return render(request,'welcome_regis.html')
+  #login
+    if user is not None :
+      auth.login(request,user)
+      return redirect('/register')
+    else :
+      messages.info(request,'Username หรือ Password ไม่ถูกต้อง')
+    return redirect('/login')
+  else:
+    return render(request,'login.html')
+      
+ 
+
     
     
