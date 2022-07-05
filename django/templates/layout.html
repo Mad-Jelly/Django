@@ -26,6 +26,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/register">register</a>
               </li>
+              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
@@ -36,19 +37,21 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-              </li>           
+              </li>    
+                     
             </ul>
-            
-            <form class="d-flex pe-lg-5">
-              
-              {% if user.is_authenticated %}
-                
-                 {{user.first_name}}
-                
-              {% else %}
-                ยังไม่ได้เข้าสู่ระบบ
-              {% endif %}
-            </form>
+          <ul class="navbar-nav pe-lg-5g mb-2 mb-lg-0">
+              {% if user.is_authenticated %}               
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"> {{user.first_name}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Logout</a>
+              </li>             
+            {% else %}
+              ยังไม่ได้เข้าสู่ระบบ
+            {% endif %}    
+        </ul>
           </div>
         </div>
     </nav>
