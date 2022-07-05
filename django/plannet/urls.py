@@ -38,4 +38,7 @@ urlpatterns = [
     path('register/',views.registger),
     
     path('login/',views.login),
+    
+    path('logout/',views.logout),
 ]
+
